@@ -10,7 +10,7 @@ async function getMovieByIds(ids) {
       const [userRating, ...idR] = idX.split("").reverse().join("");
       const id = idR.reverse().join("");
       const data = await fetch(
-        `http://www.omdbapi.com/?apikey=${KEY}&i=${id}`,
+        `https://www.omdbapi.com/?apikey=${KEY}&i=${id}`,
         {
           signal: controller.signal,
         }

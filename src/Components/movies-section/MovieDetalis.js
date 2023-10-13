@@ -40,22 +40,8 @@ export default function MovieDetails({
     Genre: genre,
   } = movie;
 
-  // if (imdbRating > 8) return <p>Greatest ever!</p>;
-  // if (imdbRating > 8) [isTop, setIsTop] = useState(true);
-
-  // const [isTop, setIsTop] = useState(imdbRating > 8);
-  // console.log(isTop);
-  // useEffect(
-  //   function () {
-  //     setIsTop(imdbRating > 8);
-  //   },
-  //   [imdbRating]
-  // );
-
   const isTop = imdbRating > 8;
   console.log(isTop);
-
-  // const [avgRating, setAvgRating] = useState(0);
 
   function handleAdd() {
     const newWatchedMovie = {
@@ -71,9 +57,6 @@ export default function MovieDetails({
 
     onAddWatched(newWatchedMovie);
     onCloseMovie();
-
-    // setAvgRating(Number(imdbRating));
-    // setAvgRating((avgRating) => (avgRating + userRating) / 2);
   }
 
   useKey("Escape", onCloseMovie);
@@ -83,7 +66,7 @@ export default function MovieDetails({
       async function getMovieDetails() {
         setIsLoading(true);
         const res = await fetch(
-          `http://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`
+          `https://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`
         );
         const data = await res.json();
         setMovie(data);
@@ -101,7 +84,6 @@ export default function MovieDetails({
 
       return function () {
         document.title = "usePopcorn";
-        // console.log(`Clean up effect for movie ${title}`);
       };
     },
     [title]
